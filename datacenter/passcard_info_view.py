@@ -6,7 +6,7 @@ def passcard_info_view(request, passcode):
     
     passcard = Passcard.objects.get(passcode=passcode)
     passcard_visits = Visit.objects.filter(passcard=passcard)
-    this_passcard_visits = []
+    serialized_passcard_visits = []
     
     for visit in passcard_visits:
         duration_in_seconds = get_duration(visit)
@@ -17,10 +17,10 @@ def passcard_info_view(request, passcode):
                 'duration': duration,
                 'is_strange': is_strange
         }
-        this_passcard_visits.append(this_passcard_visit)
+        serialized_passcard_visits.append(this_passcard_visit)
         
     context = {
         'passcard': passcard,
-        'this_passcard_visits': this_passcard_visits
+        'this_passcard_visits': serialized_passcard_visits
     }
     return render(request, 'passcard_info.html', context)

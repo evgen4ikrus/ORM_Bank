@@ -4,8 +4,8 @@ from django.shortcuts import render
 
 def storage_information_view(request):
     
-    non_closed_visits = []
     active_visits = Visit.objects.filter(leaved_at=None)
+    serialized_active_visits = []
     
     for active_visit in active_visits:
         duration_in_seconds = get_duration(active_visit)
@@ -17,9 +17,9 @@ def storage_information_view(request):
                 'duration': visit_duration,
                 'is_strange': is_strange
         }
-        non_closed_visits.append(non_closed_visit)
+        serialized_active_visits.append(non_closed_visit)
         
     context = {
-        'non_closed_visits': non_closed_visits,
+        'non_closed_visits': serialized_active_visits,
     }
     return render(request, 'storage_information.html', context)
