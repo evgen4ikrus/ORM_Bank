@@ -47,7 +47,4 @@ def format_duration(seconds):
 
 
 def verify_visit(seconds):
-    if seconds > 3600:
-        return 'Да'
-    else:
-        return 'Нет'
+    return seconds > 3600
