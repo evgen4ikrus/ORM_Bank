@@ -1,4 +1,4 @@
-from datacenter.models import Passcard, Visit, get_duration, format_duration, verify_visit, get_active_visit_duration
+from datacenter.models import Passcard, Visit, get_duration, format_duration, verify_visit
 from django.shortcuts import render
 
 
@@ -8,8 +8,8 @@ def storage_information_view(request):
     serialized_active_visits = []
     
     for active_visit in active_visits:
-        duration_in_seconds = get_active_visit_duration(active_visit)
-        visit_duration = format_duration(int(duration_in_seconds))
+        duration_in_seconds = get_duration(active_visit)
+        visit_duration = format_duration(duration_in_seconds)
         is_strange = verify_visit(duration_in_seconds)
         non_closed_visit = {
                 'who_entered': active_visit.passcard.owner_name,
