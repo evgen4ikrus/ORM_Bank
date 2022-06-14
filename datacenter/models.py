@@ -32,11 +32,11 @@ class Visit(models.Model):
 
 
 def get_duration(visit):
-    if visit.leaved_at is None:
+    if visit.leaved_at:
+        duration = (visit.leaved_at-visit.entered_at).total_seconds()
+    else:
         now = localtime()
         duration = (now-visit.entered_at).total_seconds()
-    else:
-        duration = (visit.leaved_at-visit.entered_at).total_seconds()
     return int(duration)
 
 
