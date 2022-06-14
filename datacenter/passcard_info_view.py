@@ -1,5 +1,7 @@
-from datacenter.models import Passcard, Visit, get_duration, format_duration, verify_visit
 from django.shortcuts import render
+
+from datacenter.models import (Passcard, Visit, format_duration, get_duration,
+                               verify_visit)
 
 
 def passcard_info_view(request, passcode):
