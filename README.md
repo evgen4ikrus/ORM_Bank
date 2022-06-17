@@ -14,6 +14,8 @@ DATABASE_NAME=name12345
 DATABASE_USER=name12
 DATABASE_PASSWORD=password1
 DEBUG=False
+SECRET_KEY=h7wfbk14orkt6qs-1l3^)i9h@(qo&fcfg=e5i@k*(nvg9^fg3f
+ALLOWED_HOSTS=127.0.0.1,localhost
 ```
 Python3 должен быть уже установлен. Затем используйте pip (или pip3, есть конфликт с Python2) для установки зависимостей:
 ```
